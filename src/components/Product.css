@@ -1,0 +1,91 @@
+.prodContainer {
+    border-radius: 5px;
+    margin: 10px 10px;
+    box-shadow: 0px 0px 20px 1px #96969654;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.prodContainer:hover {
+    box-shadow: 0px 0px 5px 1px #96969654;
+}
+
+img {
+    width: 150px;
+    padding: 10px 15px;
+    border-radius: 22px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    padding: 10px 15px;
+}
+h3 {
+    font-size: 1rem;
+    padding: 5px 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin: 10px 0px;
+    padding: 10px 8px;
+}
+
+button {
+    background-color: #181818;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10px 8px;
+    margin: 0px 0px 15px 0px;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.priceContainer {
+    border-top: 1px solid #85858541;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+    padding: 10px 8px;
+    margin: 10px 0px 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.edit {
+    background-color: rgb(0, 168, 0);
+    color: white;
+    padding: 10px 8px;
+    margin: 10px 0px 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.delete:hover {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
+}
+
+.edit:hover {
+    background-color: white;
+    color: rgb(0, 168, 0);
+    border: 2px solid rgb(0, 168, 0);
+}
