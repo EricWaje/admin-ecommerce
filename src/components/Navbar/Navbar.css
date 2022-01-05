@@ -6,9 +6,28 @@ nav {
     align-items: center;
 }
 
-a {
+.normal {
     text-decoration: none;
     color: white;
     margin: 0px 15px;
     font-weight: bold;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+.active {
+    text-decoration: none;
+    color: rgb(103, 212, 255);
+    background-color: white;
+    margin: 0px 15px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+.normal:hover {
+    border: 2px solid white;
 }
