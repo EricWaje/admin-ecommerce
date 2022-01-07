@@ -9,6 +9,7 @@ const ProdList = ({ prod, deleteProd }) => {
                 justifyContent: 'center',
                 flexWrap: 'wrap',
                 marginTop: '30px',
+                padding: '50px 0px',
             }}
         >
             {prod?.map((product) => (

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProdList from '../ProdList';
-import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
+import { Skeleton } from '@chakra-ui/react';
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -43,7 +43,6 @@ const Home = () => {
                         marginTop: '40px',
                     }}
                 >
-                    <Skeleton height="400px" width="200px" />
                     <Skeleton height="400px" width="200px" />
                     <Skeleton height="400px" width="200px" />
                     <Skeleton height="400px" width="200px" />

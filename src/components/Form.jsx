@@ -29,6 +29,7 @@ const Form = ({ handleSubmit, handleChange, valor, handleValue }) => {
                     width: '450px',
                     backgroundColor: 'rgb(103, 212, 255)',
                     borderRadius: '5px',
+                    marginBottom: '25px',
                 }}
                 onSubmit={handleSubmit}
             >
