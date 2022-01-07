@@ -6,8 +6,11 @@ import Product from './Product';
 const EditProd = () => {
     const [prod, setProd] = useState({});
     const [producto, setProducto] = useState({});
+    const [valor, setValor] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
+
+    const handleValue = (val) => setValor(val);
 
     const { img, name, stock, price } = producto;
 
@@ -31,11 +34,13 @@ const EditProd = () => {
         });
     };
 
+    const data = { ...prod, stock: valor };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         await fetch(url, {
             method: 'PUT',
-            body: JSON.stringify(prod),
+            body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -63,6 +68,7 @@ const EditProd = () => {
             <div
                 style={{
                     display: 'flex',
+                    width: '500px',
                 }}
             >
                 <img src={img} />
@@ -101,11 +107,16 @@ const EditProd = () => {
                             {stock}
                         </h3>
                         <span>{x}</span>
-                        <h3 style={{ color: 'green' }}>{prod.stock}</h3>
+                        <h3 style={{ color: 'green' }}>{data.stock}</h3>
                     </div>
                 </div>
             </div>
-            <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+            <Form
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                valor={valor}
+                handleValue={handleValue}
+            />
         </div>
     );
 };

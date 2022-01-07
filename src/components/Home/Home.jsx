@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ProdList from '../ProdList';
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -16,7 +17,7 @@ const Home = () => {
             }
         )
             .then((res) => {
-                console.log(res);
+                res;
             })
             .catch((error) => console.error('Error:', error));
     };
@@ -35,7 +36,19 @@ const Home = () => {
     return (
         <>
             {loading ? (
-                <h1 style={{ textAlign: 'center' }}>Loading...</h1>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        marginTop: '40px',
+                    }}
+                >
+                    <Skeleton height="400px" width="200px" />
+                    <Skeleton height="400px" width="200px" />
+                    <Skeleton height="400px" width="200px" />
+                    <Skeleton height="400px" width="200px" />
+                    <Skeleton height="400px" width="200px" />
+                </div>
             ) : (
                 <ProdList prod={data} deleteProd={deleteProd} />
             )}

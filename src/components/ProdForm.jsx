@@ -8,20 +8,27 @@ const ProdForm = () => {
     const url = 'https://hidden-beach-96657.herokuapp.com/api/products';
 
     const [formData, setFormData] = useState({});
+    const [valor, setValor] = useState(0);
+
+    const handleValue = (val) => setValor(val);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
         setFormData({
             ...formData,
             [name]: value,
         });
     };
 
+    const datos = { ...formData, stock: valor };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('hola');
         await fetch(url, {
             method: 'POST',
-            body: JSON.stringify(formData),
+            body: JSON.stringify(datos),
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -38,8 +45,12 @@ const ProdForm = () => {
 
     return (
         <div>
-            <h2 style={{ textAlign: 'center' }}>Create Product</h2>
-            <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+            <Form
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                valor={valor}
+                handleValue={handleValue}
+            />
         </div>
     );
 };

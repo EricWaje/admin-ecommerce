@@ -8,6 +8,7 @@ const ProdList = ({ prod, deleteProd }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 flexWrap: 'wrap',
+                marginTop: '30px',
             }}
         >
             {prod?.map((product) => (
