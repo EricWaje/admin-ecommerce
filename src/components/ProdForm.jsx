@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from './Form';
+import { create } from '../services/product';
 
 const ProdForm = () => {
     const navigate = useNavigate();
@@ -25,21 +26,10 @@ const ProdForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((res) => {
-                res.json();
-            })
-            .catch((error) => console.error('Error:', error))
-            .finally(() => {
-                setFormData({});
-                navigate('/');
-            });
+        await create(datos, setFormData);
+
+        setFormData({});
+        navigate('/');
     };
 
     return (

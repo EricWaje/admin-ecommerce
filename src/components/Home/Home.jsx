@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ProdList from '../ProdList';
 import { Skeleton } from '@chakra-ui/react';
+import { all } from '../../services/product';
 
 const Home = () => {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const url = 'https://hidden-beach-96657.herokuapp.com/api/products';
+    const { data, loading } = all();
 
     const deleteProd = async (id) => {
         setData(data.filter((prod) => prod.id !== id));
@@ -21,17 +19,6 @@ const Home = () => {
             })
             .catch((error) => console.error('Error:', error));
     };
-
-    const getProducts = async () => {
-        const data = await fetch(url);
-        const response = await data.json();
-        setData(response);
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        getProducts();
-    }, []);
 
     return (
         <>

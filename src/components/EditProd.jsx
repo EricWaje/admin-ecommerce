@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Form from './Form';
 import Product from './Product';
+import { edit } from '../services/product';
+import { Skeleton } from '@chakra-ui/react';
 
 const EditProd = () => {
     const [prod, setProd] = useState({});
     const [producto, setProducto] = useState({});
+    const [loading, setLoading] = useState(true);
     const [valor, setValor] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -20,6 +23,7 @@ const EditProd = () => {
         const data = await fetch(url);
         const response = await data.json();
         setProducto(response);
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -38,20 +42,8 @@ const EditProd = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch(url, {
-            method: 'PUT',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((res) => {
-                res.json();
-            })
-            .catch((error) => console.error('Error:', error))
-            .finally(() => {
-                navigate('/');
-            });
+        await edit(data, id);
+        navigate('/');
     };
 
     const x = '==>';
@@ -65,52 +57,57 @@ const EditProd = () => {
                 marginTop: '30px',
             }}
         >
-            <div
-                style={{
-                    display: 'flex',
-                    width: '500px',
-                }}
-            >
-                <img src={img} />
-                <div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h3
-                            style={{
-                                textDecoration: 'line-through',
-                                color: 'red',
-                            }}
-                        >
-                            {name}
-                        </h3>
-                        <span>{x}</span>
-                        <h3 style={{ color: 'green' }}>{prod.name}</h3>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h3
-                            style={{
-                                textDecoration: 'line-through',
-                                color: 'red',
-                            }}
-                        >
-                            {price}
-                        </h3>
-                        <span>{x}</span>
-                        <h3 style={{ color: 'green' }}>{prod.price}</h3>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h3
-                            style={{
-                                textDecoration: 'line-through',
-                                color: 'red',
-                            }}
-                        >
-                            {stock}
-                        </h3>
-                        <span>{x}</span>
-                        <h3 style={{ color: 'green' }}>{data.stock}</h3>
+            {loading ? (
+                <Skeleton width="170px" height="170px" />
+            ) : (
+                <div
+                    style={{
+                        display: 'flex',
+                        width: '500px',
+                    }}
+                >
+                    <img src={img} />
+                    <div>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3
+                                style={{
+                                    textDecoration: 'line-through',
+                                    color: 'red',
+                                }}
+                            >
+                                {name}
+                            </h3>
+                            <span>{x}</span>
+                            <h3 style={{ color: 'green' }}>{prod.name}</h3>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3
+                                style={{
+                                    textDecoration: 'line-through',
+                                    color: 'red',
+                                }}
+                            >
+                                {price}
+                            </h3>
+                            <span>{x}</span>
+                            <h3 style={{ color: 'green' }}>{prod.price}</h3>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3
+                                style={{
+                                    textDecoration: 'line-through',
+                                    color: 'red',
+                                }}
+                            >
+                                {stock}
+                            </h3>
+                            <span>{x}</span>
+                            <h3 style={{ color: 'green' }}>{data.stock}</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
+
             <Form
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
