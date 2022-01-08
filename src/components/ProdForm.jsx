@@ -25,7 +25,6 @@ const ProdForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('hola');
         await fetch(url, {
             method: 'POST',
             body: JSON.stringify(datos),

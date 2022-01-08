@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './components/Home/Home';
 import ProdForm from './components/ProdForm';
 import EditProd from './components/EditProd';
+import Login from './components/Login';
 
 function App() {
     return (
@@ -14,7 +15,8 @@ function App() {
                     <Navbar />
                 </div>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/create" element={<ProdForm />} />
                     <Route path="/edit/:id" element={<EditProd />} />
                 </Routes>

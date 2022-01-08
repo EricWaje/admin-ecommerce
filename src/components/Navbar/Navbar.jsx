@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <nav>
             <CustomLink to="/create">Create Product</CustomLink>
-            <CustomLink to="/">Product List</CustomLink>
+            <CustomLink to="/home">Product List</CustomLink>
         </nav>
     );
 };
